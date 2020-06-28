@@ -38,7 +38,7 @@
                 function writeUserData(userId) {
                     firebase.database().ref('users/' + userId + '/' + today).set({
                         mom: mom1,
-                    });
+                    }).then(alert("Memories Recorded"));
                 }
 
                 writeUserData(userId, pic1, vid1);
