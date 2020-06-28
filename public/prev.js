@@ -15,7 +15,6 @@
     var i = 0;
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            console.log(user.uid);
             var userId = user.uid;
             const db = firebase.database();
             db.ref('users/' + userId).on("value", function(snapshot) {
@@ -29,11 +28,32 @@
                         para1.innerHTML = snapshot.val();
                         document.getElementById("content").appendChild(para1);
                     });
+                    var storageref = firebase.storage().ref();
+                    storageref.child(userId + '/' + i + '.JPG').getDownloadURL().then(function(url) {
+                        var img = document.createElement('IMG');
+                        img.setAttribute("src", url);
+                        document.getElementById("content").appendChild(img);
+                    }).catch(function(error) {
+                        console.log(error);
+                    });
+                    storageref.child(userId + '/' + i + '.MP4').getDownloadURL().then(function(url) {
+                        var vid = document.createElement('VIDEO');
+                        vid.setAttribute("src", url);
+
+                        vid.setAttribute("width", "320");
+                        vid.setAttribute("height", "240");
+                        vid.setAttribute("controls", "controls");
+                        vid.setAttribute("class", "row");
+                        document.getElementById("content").appendChild(vid);
+                    }).catch(function(error) {
+                        console.log(error);
+                    });
                 }
 
             }, function(error) {
                 console.log("Error: " + error.code);
             });
+
         } else {
             alert("Logged Out");
         }
