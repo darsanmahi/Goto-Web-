@@ -307,3 +307,11 @@ h3 {
     font-style: italic;
     font-weight: bold;
 }
+
+#prevbody {
+    color: white;
+    background-image: url(../images/brown-bookmark-1383562.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}

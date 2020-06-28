@@ -12,14 +12,24 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
+    var i = 0;
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             console.log(user.uid);
             var userId = user.uid;
             const db = firebase.database();
-            db.ref('users/' + userId + '/mom').on("value", function(snapshot) {
-                console.log(snapshot.val());
-                document.getElementById('content1').innerHTML = snapshot.val();
+            db.ref('users/' + userId).on("value", function(snapshot) {
+                var data = snapshot.val();
+                for (i in data) {
+                    var para = document.createElement("H3");
+                    para.innerHTML = i;
+                    document.getElementById("content").appendChild(para);
+                    db.ref('users/' + userId + '/' + i + '/mom').on("value", function(snapshot) {
+                        var para1 = document.createElement("P");
+                        para1.innerHTML = snapshot.val();
+                        document.getElementById("content").appendChild(para1);
+                    });
+                }
 
             }, function(error) {
                 console.log("Error: " + error.code);
