@@ -4,9 +4,10 @@
     padding: 0;
 }
 
-@media (min-width: 0px) and (max-width: 768px) {
+@media (max-width: 768px) {
     #intro {
-        height: 400px;
+        width: max-content;
+        line-height: 200px;
     }
 }
 
@@ -20,6 +21,10 @@
     background-attachment: fixed;
     color: white;
     text-align: left;
+}
+
+#intro {
+    height: 75%;
 }
 
 #intro h2 {
