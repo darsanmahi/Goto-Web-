@@ -33,7 +33,7 @@
                 const pic1 = pic.value;
                 console.log(pic1);
                 const vid1 = vid.value;
-                var uploadTask = file.child(userId).put(pic1);
+                //var uploadTask = file.child(userId).put(pic1);
 
                 function writeUserData(userId) {
                     firebase.database().ref('users/' + userId + '/' + today).set({
