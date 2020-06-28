@@ -17,16 +17,28 @@
     const vid = document.getElementById('videos');
     const db = firebase.database();
     const dropbtn = document.getElementById('dropbtn');
-    dropbtn.addEventListener('click', function() {
-        const mom1 = mom.value;
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
 
-        function writeUserData() {
-            db.ref('users/' + 'mINX5YjyzncHGRb8c6w21hHRbXN2').set({
-                moments: mom1,
+    today = dd + mm + yyyy;
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            const userId = user.uid;
+            window.userId = userId;
+            dropbtn.addEventListener('click', function() {
+                const mom1 = mom.value;
+
+                function writeUserData(userId) {
+                    firebase.database().ref('users/' + userId + '/' + today).set({
+                        mom: mom1
+                    });
+                }
+                writeUserData(userId);
             });
-            alert("Memories recorded!");
+        } else {
+            alert("Logged Out");
         }
-        writeUserData();
-
     });
 })();

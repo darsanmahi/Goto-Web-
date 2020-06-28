@@ -12,14 +12,15 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-    const email = document.getElementById('user');
-    const pword = document.getElementById('pword');
+    const email = document.getElementById('username');
+    const pword = document.getElementById('password');
     const login = document.getElementById('loginbtn');
+    console.log(login);
     login.addEventListener('click', function() {
         const email1 = email.value;
         const pword1 = pword.value;
         firebase.auth().signInWithEmailAndPassword(email1, pword1).then(function() {
-            window.location = "index.html";
+            window.location = "index1.html";
         }).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
