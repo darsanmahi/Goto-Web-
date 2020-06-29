@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<title>My Diary</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body,
+    h1 {
+        font-family: "Raleway", Arial, sans-serif
+    }
+    
+    h1 {
+        letter-spacing: 6px
+    }
+    
+    .w3-row-padding img {
+        margin-bottom: 12px
+    }
+    
+    .rcorners1 {
+        border-radius: 25px;
+        padding: 20px;
+        padding-top: 10px;
+        width: 100%;
+        height: 150px;
+    }
+    
+    .nametag {
+        padding-left: 10px;
+        border-left: 6px solid #1404fa;
+        background-color: #041dfa50;
+    }
+    
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .flex-container>div {
+        background-color: #f1f1f1;
+        width: 47%;
+        height: 100%;
+        margin: 10px;
+    }
+</style>
+
+<body>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-content" style="max-width:1500px">
+
+        <!-- Header -->
+        <header class="w3-panel w3-center " style="padding:128px 16px">
+            <h1>Diary</h1>
+            <h2>Team 2.o</h2>
+
+            <div class="w3-padding-32">
+                <div class="w3-bar w3-border">
+                    <a href="index1.html" class="w3-bar-item w3-button">Home</a>
+                    <a href="home1.html" class="w3-bar-item w3-button ">My Diary</a>
+                    <a href="#" class="w3-bar-item w3-button w3-light-grey">Interactive Diary</a>
+                    <a href="#" class="w3-bar-item w3-button w3-hide-small">Messages</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="w3-row-padding w3-greyscale" style="margin-bottom:128px">
+            <div class="flex-container" id="two">
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large">
+            <p>Powered by <a href="#" target="_blank" class="w3-hover-text-green">Team 2.o</a></p>
+        </footer>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+        <script src="/__/firebase/7.15.5/firebase-app.js"></script>
+        <script src="/__/firebase/7.15.5/firebase-analytics.js"></script>
+        <script src="/__/firebase/7.15.5/firebase-auth.js"></script>
+        <script src="/__/firebase/7.15.5/firebase-firestore.js"></script>
+        <script src="/__/firebase/7.15.5/firebase-database.js"></script>
+        <script src="./collabdisplay.js"></script>
+</body>
+
+</html>

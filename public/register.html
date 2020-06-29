@@ -44,9 +44,10 @@
             <div id="output"></div>
             <div class="avatar"></div>
             <div class="form-box">
-                <input name="user" id="user" type="email" placeholder="bookid">
+                <input name="bookid" id="bookid" type="number" placeholder="bookid">
                 <input type="password" name="pword" id="pword" placeholder="password">
-                <button id="loginbtn1" class="btn btn-info btn-block login" type="submit">Login</button>
+                <input type="name" name="refname" id="refname" placeholder="Name">
+                <button id="booklogin" class="btn btn-info btn-block login" type="submit">Login</button>
             </div>
         </div>
     </div>
@@ -63,7 +64,9 @@
     <!-- Add Firebase products that you want to use -->
     <script src="/__/firebase/7.15.5/firebase-auth.js"></script>
     <script src="/__/firebase/7.15.5/firebase-firestore.js"></script>
-    <script src="./login1.js"></script>
+    <script src="/__/firebase/7.15.5/firebase-database.js"></script>
+    <script src="/__/firebase/7.15.5/firebase-storage.js"></script>
+    <script type="module" src="./login1.js"></script>
 
 </body>
 
