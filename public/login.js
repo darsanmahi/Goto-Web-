@@ -15,7 +15,6 @@
     const email = document.getElementById('username');
     const pword = document.getElementById('password');
     const login = document.getElementById('loginbtn');
-    console.log(login);
     login.addEventListener('click', function() {
         const email1 = email.value;
         const pword1 = pword.value;
