@@ -32,14 +32,14 @@
             const userId = user.uid;
             fbtn1.addEventListener("change", function(e) {
                 var file = e.target.files[0];
-                const mynewfile = new File([file], today + '.JPG', { type: file.type });
+                const mynewfile = new File([file], today + '.jpg', { type: file.type });
                 console.log(mynewfile.name);
                 var storageref = firebase.storage().ref(userId + '/' + mynewfile.name);
                 storageref.put(file);
             });
             fbtn2.addEventListener("change", function(a) {
                 var file1 = a.target.files[0];
-                const mynewfile1 = new File([file1], today + '.MP4', { type: file1.type });
+                const mynewfile1 = new File([file1], today + '.mp4', { type: file1.type });
                 console.log(mynewfile1.name);
                 var storageref = firebase.storage().ref(userId + '/' + mynewfile1.name);
                 storageref.put(file1);
@@ -50,7 +50,10 @@
                 function writeUserData(userId) {
                     firebase.database().ref('users/' + userId + '/' + today).set({
                         mom: mom1,
-                    }).then(alert("Memories Recorded"));
+                    }).then(function() {
+                        alert("Memories Recorded");
+                        window.location = "home1.html";
+                    });
                 }
 
                 writeUserData(userId);

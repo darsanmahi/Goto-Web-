@@ -44,18 +44,20 @@
                                 for (k in fam) {
                                     if (k == r1) {
                                         flag = 0;
+                                        console.log('FLAG ' + flag);
                                         localStorage.setItem("b1", b1);
                                         localStorage.setItem("p1", p1);
                                         localStorage.setItem("r1", r1);
                                         window.location = "collabdisplay.html";
+                                        break;
                                     } else {
                                         flag = 1;
                                     }
                                 }
+                                if (flag == 1) {
+                                    alert("You are not a member of this book! Join and start writing");
+                                }
                             });
-                        }
-                        if (flag == 1) {
-                            alert("You are not a member of this book! Join here and start writing");
                         }
                     });
                 } else {
