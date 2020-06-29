@@ -23,6 +23,7 @@
             window.location = "index.html";
         }).catch(function(error) {
             console.log(error);
+            alert('Error: ' + error.message);
         });
     });
 })();

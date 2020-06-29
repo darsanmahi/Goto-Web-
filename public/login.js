@@ -22,10 +22,9 @@
         firebase.auth().signInWithEmailAndPassword(email1, pword1).then(function() {
             window.location = "index1.html";
         }).catch(function(error) {
-            // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorCode);
+            alert('Error: ' + errorMessage);
         });
     });
 })();

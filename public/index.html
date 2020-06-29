@@ -35,31 +35,29 @@
 </div>
 
 <body id="indexbody">
-    <div class="container">
-        <div class="form-group row">
-            <div class="col-12 col-sm-3">
-                <label for="username" class="col-form-label">E-Mail</label>
-            </div>
-            <div class="col-sm-6">
-                <input type="email" id="username" name="username" class="form-control" placeholder="E-Mail">
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-12 col-sm-3">
-                <label for="password" class="col-form-label">Password</label>
-            </div>
-            <div class="col-sm-6">
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-12 offset-2">
-                <button type="submit" class="btn btn-primary" id="loginbtn">Login</button>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-12 offset-1 col-sm-3">
-                <a class="links" href="registeruser.html">New Here? Register Now!</a>
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="col-md-6 d-none d-md-flex bg-image"></div>
+            <div class="col-md-6 bg-light">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 col-xl-7 mx-auto">
+                                <h3 class="display-4" id="logintext">LOGIN</h3>
+                                <p class="text-muted mb-4">The Go-to!</p>
+                                <div class="form-group mb-3">
+                                    <input id="username" name="username" type="email" placeholder="Email address" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input id="password" name="password" type="password" placeholder="Password" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" id="loginbtn">Sign in</button>
+                                <br>
+                                <a class="offset-3" href="registeruser.html">New Here? Register Now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

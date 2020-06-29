@@ -13,14 +13,25 @@
 
 #indexbody {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding: 50px 0px 0px 0px;
     font-weight: 20px;
-    background-image: url(../images/wood-light-creative-space-68562.jpg);
+}
+
+#logintext {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+}
+
+.bg-image {
+    background-image: url(../images/white-blank-notebook-733857.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    color: white;
-    text-align: left;
+    background-position: center center;
+}
+
+.login,
+.image {
+    min-height: 100vh;
 }
 
 #intro {
@@ -314,4 +325,16 @@ h3 {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+}
+
+#registeruser {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.bg-image1 {
+    background-image: url(../images/inspirational-quotes-written-on-a-planner-636237.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
 }
