@@ -17,7 +17,7 @@
     const p1 = localStorage.getItem("p1");
     const r1 = localStorage.getItem("r1");
     const db = firebase.database();
-    db.ref('users/' + b1 + '/' + p1).on("value", function(snapshot) {
+    db.ref('users/' + b1 + '/' + p1 + '/').on("value", function(snapshot) {
         var data = snapshot.val();
         for (i in data) {
             var divider = document.createElement("div");
@@ -32,10 +32,19 @@
             document.getElementById("one").appendChild(para);
             db.ref('users/' + b1 + '/' + p1 + '/' + i).on("value", function(snapshot) {
                 var data1 = snapshot.val();
-                var para1 = document.createElement("P");
-                para1.innerHTML = data1;
-                para1.setAttribute("class", "row");
-                document.getElementById("one").appendChild(para1);
+                for (j in data1) {
+                    var para1 = document.createElement("P");
+                    para1.innerHTML = j;
+                    para1.setAttribute("class", "row");
+                    document.getElementById("one").appendChild(para1);
+                    db.ref('users/' + b1 + '/' + p1 + '/' + i + '/' + j + '/mom').on("value", function(snapshot) {
+                        var data2 = snapshot.val();
+                        var para2 = document.createElement("p");
+                        para2.innerHTML = data2;
+                        para2.setAttribute("class", "row");
+                        document.getElementById("one").appendChild(para2);
+                    });
+                }
             });
         }
     });
