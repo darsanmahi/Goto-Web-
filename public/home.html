@@ -33,6 +33,34 @@
 </div>
 
 <body id="homebody">
+    <nav class="navbar navbar-dark navbar-expand-lg">
+        <a class="navbar-brand" href="#">
+            <img src="./images/b515e6c2-9e5f-486e-908d-dc3ecd0f8ab4_200x200.png" width="50" height="50" alt="Team 2.0" loading="lazy">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index1.html"><i class="fa fa-home"></i> Home </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><i class="fa fa-handshake-o"></i> Collaborative Diary</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-key"></i> Personal Diary
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="write.html"><i class="fa fa-chevron-right"></i> Write for today</a>
+                        <a class="dropdown-item" href="prevwriting.html"><i class="fa fa-chevron-left"></i> Previous Writing</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="btn btn-light" id="logoutbtn"><i class="fa fa-sign-out"></i> Sign Out
+        </div>
+    </nav>
     <h3>
         <center>What an odd thing a diary is: the things you omit are more important than those you put in<br>- Simone de Beauvoir</center>
     </h3>
@@ -45,9 +73,10 @@
             LOG IN
             </a>
     </div>
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="./node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="./logout.js"></script>
 </body>
 
 </html>

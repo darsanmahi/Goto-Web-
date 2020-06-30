@@ -4,13 +4,6 @@
     padding: 0;
 }
 
-@media (max-width: 768px) {
-    #intro {
-        width: max-content;
-        line-height: 200px;
-    }
-}
-
 #indexbody {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 20px;
@@ -18,10 +11,9 @@
 
 #indexbody1 {
     background-image: url(../images/wood-light-creative-space-68562.jpg);
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 100px;
+    background-attachment: fixed;
     text-align: left;
     color: white;
 }
@@ -45,6 +37,7 @@
 }
 
 #intro h2 {
+    padding-top: 50px;
     font-family: Segoe UI;
     font-style: italic;
     font-weight: bold;
@@ -65,10 +58,9 @@
 #writingbody {
     background-image: url(../images/close-up-of-hand-holding-pencil-over-white-background-316466.jpg);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 10px;
+    background-attachment: fixed;
 }
 
 #scribble {
@@ -81,9 +73,9 @@
 
 #homebody {
     background-image: url(../images/bg.jpeg);
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 h3 {
@@ -140,9 +132,9 @@ h3 {
 
 #registerbody {
     background: #eee url(../images/log.jpg);
-    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .login-container {
@@ -277,12 +269,27 @@ h3 {
 
 #home1body {
     background-image: url(../images/blur-composition-desk-diary-261705.jpg);
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     padding: 100px;
     text-align: center;
     color: white;
+}
+
+.navbar {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    padding-left: 100px;
+}
+
+.navbar-dark {
+    background-color: #000000;
+}
+
+#navbarSupportedContent {
+    color: black;
 }
 
 #go-to {
@@ -311,8 +318,8 @@ h3 {
     color: white;
     background-image: url(../images/brown-bookmark-1383562.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 #registeruser {
