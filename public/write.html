@@ -83,24 +83,20 @@
                 <h4>Memories are incomplete without pictures or videos these days. Aren't They??</h4>
             </div>
         </div>
-        <div class="form-group row row-content offset-1">
-            <div class="col-12 col-md-5">
-                <label for="pictures"><i class="fa fa-picture-o"></i> Drop those beautiful pictures </label>
+        <div class="form-group row">
+            <div class="custom-file">
+                <div class="col-12 col-sm-6">
+                    <input type="file" class="custom-file-input" name="pictures" id="filebtn1">
+                    <label for="filebtn1" id="pics" class="custom-file-label"><i class="fa fa-picture-o"></i> Drop those beautiful pictures </label>
+                </div>
             </div>
         </div>
-        <div class="form-group row row-content">
-            <div class="col-12 col-md-5">
-                <input type="file" name="pictures" id="filebtn1">
-            </div>
-        </div>
-        <div class="form-group row row-content offset-1">
-            <div class="col-12 col-md-5">
-                <label for="videos"><i class="fa fa-video-camera"></i> Upload that lively video </label>
-            </div>
-        </div>
-        <div class="form-group row row-content">
-            <div class="col-12 col-md-3">
-                <input type="file" name="videos" id="filebtn2" accept="video/*">
+        <div class="form-group row">
+            <div class="custom-file">
+                <div class="col-12 col-sm-6">
+                    <input type="file" class="custom-file-input" name="videos" id="filebtn2" accept="video/*">
+                    <label for="filebtn2" id="vids" class="custom-file-label"><i class="fa fa-video-camera"></i> Upload that lively video </label>
+                </div>
             </div>
         </div>
         <div class="form-group row row-content">
@@ -125,10 +121,16 @@
     <script src="/__/firebase/7.15.5/firebase-firestore.js"></script>
     <script src="/__/firebase/7.15.5/firebase-database.js"></script>
     <script src="/__/firebase/7.15.5/firebase-storage.js"></script>
-    <script src="./write.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script>
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+    <script src="./write.js"></script>
     </body>
 
 </html>

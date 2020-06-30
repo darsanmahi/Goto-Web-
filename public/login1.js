@@ -60,8 +60,11 @@
                             });
                         }
                     });
+                } else if (p1 == " ") {
+                    alert("Please enter Password");
                 } else {
-                    alert("Invalid Password");
+                    alert("Invalid password");
+                    break;
                 }
             }
         });
@@ -91,10 +94,12 @@
         const p1 = pword.value;
         const r1 = refname.value;
         const db = firebase.database();
+        flag = 1;
         db.ref("users/").on("value", function(snapshot) {
             var daa = snapshot.val();
             for (i in daa) {
-                if (i == b1) {
+                console.log(i, b1);
+                if (i === b1) {
                     flag = 1;
                     break;
                 } else {
@@ -103,7 +108,7 @@
             }
         });
         console.log(flag);
-        if (flag == 0) {
+        if (flag === 0) {
             db.ref("users/" + b1 + '/' + p1 + '/' + today + '/' + r1).set({
                 mom: "New Book up here!"
             }).then(function() {
@@ -115,8 +120,8 @@
             }).catch(function(error) {
                 console.log(error);
             });
-        } else if (flag == 1) {
-            alert("Book Id already taken");
+        } else if (flag === 1) {
+            alert("Book id already taken");
         }
     });
     const logoutbtn = document.getElementById('logoutbtn');

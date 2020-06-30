@@ -28,7 +28,7 @@
             divider.setAttribute("id", "one");
             divider.setAttribute("style", "border-style:solid;");
             document.getElementById('two').appendChild(divider);
-            var para = document.createElement("P");
+            var para = document.createElement("h3");
             for (k = 0; k < name.length; k++) {
                 if (k == 2) {
                     day = day + '/' + name[k];
