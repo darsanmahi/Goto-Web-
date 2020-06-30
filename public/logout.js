@@ -12,7 +12,6 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     const logoutbtn = document.getElementById('logoutbtn');
-    console.log(logoutbtn);
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             logoutbtn.addEventListener("click", function() {

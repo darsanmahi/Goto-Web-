@@ -91,17 +91,44 @@
         const p1 = pword.value;
         const r1 = refname.value;
         const db = firebase.database();
-
-        var book = db.ref("users/" + b1 + '/' + p1 + '/' + today + '/' + r1).set({
-            mom: "New Book up here!"
-        }).then(function() {
-            alert("Book created successfully");
-            localStorage.setItem("b1", b1);
-            localStorage.setItem("p1", p1);
-            localStorage.setItem("r1", r1);
-            window.location = "collabdisplay.html";
-        }).catch(function(error) {
-            console.log(error);
+        db.ref("users/").on("value", function(snapshot) {
+            var daa = snapshot.val();
+            for (i in daa) {
+                if (i == b1) {
+                    flag = 1;
+                    break;
+                } else {
+                    flag = 0;
+                }
+            }
         });
+        console.log(flag);
+        if (flag == 0) {
+            db.ref("users/" + b1 + '/' + p1 + '/' + today + '/' + r1).set({
+                mom: "New Book up here!"
+            }).then(function() {
+                alert("Book created successfully");
+                localStorage.setItem("b1", b1);
+                localStorage.setItem("p1", p1);
+                localStorage.setItem("r1", r1);
+                window.location = "collabdisplay.html";
+            }).catch(function(error) {
+                console.log(error);
+            });
+        } else if (flag == 1) {
+            alert("Book Id already taken");
+        }
+    });
+    const logoutbtn = document.getElementById('logoutbtn');
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            logoutbtn.addEventListener("click", function() {
+                firebase.auth().signOut();
+                alert("Logged Out!");
+                window.location = "index.html";
+            });
+        } else {
+            console.log('Oops! Logged Out');
+        }
     });
 })();

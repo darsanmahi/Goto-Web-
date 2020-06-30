@@ -87,4 +87,16 @@
             alert("Logged Out");
         }
     });
+    const logoutbtn = document.getElementById('logoutbtn');
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            logoutbtn.addEventListener("click", function() {
+                firebase.auth().signOut();
+                alert("Logged Out!");
+                window.location = "index.html";
+            });
+        } else {
+            console.log('Oops! Logged Out');
+        }
+    });
 })();

@@ -22,7 +22,6 @@
     const b1 = localStorage.getItem("b1");
     const p1 = localStorage.getItem("p1");
     const r1 = localStorage.getItem("r1");
-    console.log('users/' + b1 + '/' + p1 + '/' + today + '/' + r1);
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             dropbtn.addEventListener("click", function() {
