@@ -58,8 +58,6 @@
 
                 writeUserData(userId);
             });
-        } else {
-            alert("Logged Out");
         }
     });
     const logoutbtn = document.getElementById('logoutbtn');

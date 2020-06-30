@@ -83,8 +83,6 @@
                 console.log("Error: " + error.code);
             });
 
-        } else {
-            alert("Logged Out");
         }
     });
     const logoutbtn = document.getElementById('logoutbtn');
