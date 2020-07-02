@@ -284,6 +284,11 @@ h3 {
     padding-left: 100px;
 }
 
+iframe {
+    height: 100%;
+    width: 100%;
+}
+
 .navbar-dark {
     background-color: #000000;
 }

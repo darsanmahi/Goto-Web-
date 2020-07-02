@@ -40,9 +40,10 @@
             fbtn2.addEventListener("change", function(a) {
                 var file1 = a.target.files[0];
                 const mynewfile1 = new File([file1], today + '.mp4', { type: file1.type });
-                console.log(mynewfile1.name);
-                var storageref = firebase.storage().ref(userId + '/' + mynewfile1.name);
-                storageref.put(file1);
+                var storageref1 = firebase.storage().ref(userId + '/' + mynewfile1.name);
+                storageref1.put(file1).then(console.log("Success!")).catch(function(error) {
+                    console.log(error.message);
+                });
             });
             dropbtn.addEventListener('click', function() {
                 const mom1 = mom.value;

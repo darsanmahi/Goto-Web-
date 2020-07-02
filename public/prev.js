@@ -15,6 +15,7 @@
     var i = 0;
     var j = 0;
     var k = 0;
+    var l = 0;
     var day = "";
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -61,19 +62,30 @@
                             document.getElementById(String(j)).appendChild(img);
                             j++;
                         }).catch(function(error) {
-                            console.log(error);
+                            console.log(error.message);
                         });
-                        storageref.child(userId + '/' + i + '.mp4').getDownloadURL().then(function(url) {
-                            var vid = document.createElement('VIDEO');
+                    });
+                    db.ref('users/' + userId + '/' + i + '/mom').on("value", function(snapshot) {
+                        firebase.storage().ref().child(userId + '/' + i + '.mp4').getDownloadURL().then(function(url) {
+                            var divid1 = document.createElement("div");
+                            if (l == 0) {
+                                divid1.setAttribute("class", "carousel-item active");
+                            } else {
+                                divid1.setAttribute("class", "carousel-item");
+                            }
+                            divid1.setAttribute("id", String(j));
+                            document.getElementById("video12").appendChild(divid1);
+                            var vid = document.createElement('video');
                             vid.setAttribute("src", url);
-                            vid.setAttribute("width", "75%");
-                            vid.setAttribute("height", "50%");
-                            vid.setAttribute("style", "padding:15px;");
-                            vid.setAttribute("controls", "controls");
-                            vid.setAttribute("class", "row");
-                            document.getElementById("imgvid").appendChild(vid);
+                            vid.controls = "true";
+                            vid.autoplay = "true";
+                            vid.setAttribute("data-interval", "1000");
+                            vid.setAttribute("height", "100%");
+                            vid.setAttribute("width", "100%");
+                            document.getElementById(String(j)).appendChild(vid);
+                            l++;
                         }).catch(function(error) {
-                            console.log(error);
+                            console.log(error.message);
                         });
                     });
                     day = "";
