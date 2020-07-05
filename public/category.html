@@ -1,41 +1,595 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Go-to!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/style.css">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+
+    <title>Your Go-to!</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-up {
+            top: -80px;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .main {
+            background: url(ban6.jpg) no-repeat;
+            background-size: cover;
+            display: table;
+            width: 100%;
+            position: relative;
+        }
+        
+        .main:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            left: 0;
+            z-index: -1;
+            opacity: .85;
+            position: absolute;
+        }
+        
+        .nav-icon {
+            position: relative;
+            float: right;
+        }
+        
+        .main-title {
+            font-size: 24px;
+            line-height: 28px;
+            color: #fff;
+            font-weight: 400;
+        }
+        
+        .hello {
+            color: #fff;
+            line-height: 51px;
+        }
+        
+        .main-content {
+            padding: 0 60px;
+            vertical-align: middle;
+            display: table-cell;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .logo a {
+            color: blue;
+            margin-left: 30px;
+            border: 1px solid white;
+            background: white;
+            font-size: 30px;
+        }
+        
+        .logo a:hover {
+            text-decoration: none;
+        }
+        
+        .full-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-size: cover;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s 0s, visibility 0s 0.3s;
+            box-shadow: 1px 2px 10px 5px black;
+            animation: slider 15s infinite linear;
+        }
+        
+        @keyframes slider {
+            0% {
+                background-image: url(h1.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+            50% {
+                background-image: url(h2.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+            100% {
+                background-image: url(ban5.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+        }
+        /* Full Menu */
+        
+        .full-menu .modal-close {
+            /* 'X' icon */
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            padding: 50px;
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3) url(cd-icon-close.svg)no-repeat center center;
+            overflow: hidden;
+            text-indent: 100%;
+            white-space: nowrap;
+            visibility: hidden;
+            opacity: 0;
+            transform: scale(0);
+            visibility: 0s 0.3s, opacity 0.3s 0s;
+            transition: transform 0.3s 0s, visibility 0s 0.3s, opacity 0.3s 0s;
+        }
+        
+        .no-touch .full-menu .modal-close:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .full-menu.visible {
+            background-size: 100%;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.7s, visibility 0s;
+        }
+        
+        .full-menu.visible .fullmenu-content {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .full-menu.visible .modal-close {
+            visibility: visible;
+            opacity: 1;
+            transition: transform 0.3s 0s, visibility 0s 0s, opacity 0.3s 0s;
+            transform: scale(1);
+        }
+        
+        @media only screen and (min-width: 1100px) {
+            .full-menu .fullmenu-content {
+                padding: 6em 5%;
+            }
+            .full-menu .modal-close {
+                height: 60px;
+                width: 60px;
+            }
+            .full-menu p {
+                font-size: 25px;
+            }
+        }
+        
+        .cd-transition-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            overflow: hidden;
+        }
+        
+        .cd-transition-layer .bg-layer {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translateY(-50%) translateX(-2%);
+            transform: translateY(-50%) translateX(-2%);
+            height: 100%;
+            width: 2500%;
+            background: url(ink.png) no-repeat 0 0;
+            background-size: 100% 100%;
+        }
+        
+        .cd-transition-layer.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .cd-transition-layer.opening .bg-layer {
+            animation: cd-sequence 1.0s steps(24);
+            animation-fill-mode: forwards;
+        }
+        
+        .cd-transition-layer.closing .bg-layer {
+            animation: cd-sequence-reverse 1.0s steps(24);
+            animation-fill-mode: forwards;
+        }
+        
+        .no-cssanimations .cd-transition-layer {
+            display: none;
+        }
+        
+        @keyframes cd-sequence {
+            0% {
+                transform: translateY(-50%) translateX(-2%);
+            }
+            100% {
+                transform: translateY(-50%) translateX(-98%);
+            }
+        }
+        
+        @keyframes cd-sequence-reverse {
+            0% {
+                transform: translateY(-50%) translateX(-98%);
+            }
+            100% {
+                transform: translateY(-50%) translateX(-2%);
+            }
+        }
+        
+        .full-menu .fullmenu-content {
+            height: 100%;
+            width: 100%;
+            display: table;
+            font-weight: bold;
+        }
+        
+        .page-menu {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .page-menu li {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            line-height: 50px;
+            margin-left: -55px;
+            color: #fff;
+        }
+        
+        .page-menu li:last-child {
+            line-height: 90px;
+        }
+        
+        .page-menu li a {
+            color: #fff;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 26px;
+            position: relative;
+            font-weight: bold;
+        }
+        
+        .social img {
+            width: 18px;
+            top: -30px;
+        }
+        
+        .main .social {
+            margin-top: -30px;
+        }
+        
+        .social a {
+            margin-right: 20px;
+        }
+        
+        .social a:hover img {
+            opacity: .6;
+            transition: all ease 0.3s;
+        }
+        
+        .social a:last-child {
+            margin-right: 0px;
+        }
+        
+        header {
+            position: fixed;
+            padding: 30px;
+            top: 0;
+            width: 100%;
+            z-index: 2;
+        }
+        
+        .nav-icon {
+            width: 23px;
+            height: 18px;
+            position: relative;
+            transform: rotate(0deg);
+            transition: .5s ease-in-out;
+            cursor: pointer;
+            margin-top: -90px;
+        }
+        
+        .nav-icon span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #fff;
+            opacity: 1;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+        
+        .nav-icon span:nth-child(1) {
+            top: 0px;
+            transform-origin: left center;
+        }
+        
+        .nav-icon span:nth-child(2) {
+            top: 6px;
+            transform-origin: left center;
+        }
+        
+        .nav-icon span:nth-child(3) {
+            top: 12px;
+            transform-origin: left center;
+            width: 60%;
+            right: 0 !important;
+        }
+        
+        .nav-icon:hover span:nth-child(3) {
+            width: 100%;
+        }
+    </style>
 </head>
 
-<body id="category">
-    <div class="container-fluid">
-        <div class="row no-gutter">
-            <div class="col-12">
-                <a href="indexexpense.html">Expenses Calculator</a>
-            </div>
-            <div class="col-12">
-                <a href="index1.html">Diary</a>
-            </div>
-            <div class="col-12">
-                <a href="users.html">To-do List</a>
-            </div>
+<body>
+
+
+    <header>
+        <div class="logo float-left">
+            <h1 style="background: none; border: none;font-size:60px;color: #fff;margin-top: 20px;">Your Go-to! by Team 2.0</h1>
         </div>
+
+        <div class="nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Full Menu -->
+    <div class="full-menu" style="float:left;">
+        <div class="fullmenu-content">______
+            <ul class="page-menu">
+                <li>
+                    <a href="#"> <i class="fa fa-home"></i> Home</a>
+                </li><br>
+                <li>
+                    <a href="index1.html"><i class="fa fa-book"></i> Diary</a></li><br>
+                <li>
+                    <a href="users.html"> <i class="fa fa-calendar-check-o"></i> To-do List</a>
+                </li><br>
+                <li>
+                    <a href="indexexpense.html"> <i class="fa fa-tachometer"></i> Expenses Tracker</a>
+                </li><br><br>
+                <li class="social" style="position:absolute;left: 880px;">
+                    <a href="#"><img src="icons/social/twitter.svg" alt=""></a>
+                    <a href="#"><img src="icons/social/instagram.svg" alt=""></a>
+                    <a href="#"><img src="icons/social/send.svg" alt=""></a>
+                </li>
+            </ul>
+
+        </div>
+        <a href="#0" class="modal-close"></a>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <div class="cd-transition-layer visible opening">
+        <div class="bg-layer"></div>
+    </div>
 
-    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
-    <script src="/__/firebase/7.15.5/firebase-app.js"></script>
+    <div class="wrapper">
+        <section class="main">
+            <div class="main-content">
+                <div class="social">
+                    <a href="#"><img src="icons/social/twitter.svg" alt=""></a>
+                    <a href="#"><img src="icons/social/instagram.svg" alt=""></a>
+                    <a href="#"><img src="icons/social/send.svg" alt=""></a>
+                </div>
+            </div>
 
-    <script src="/__/firebase/7.15.5/firebase-analytics.js"></script>
 
-    <script src="/__/firebase/7.15.5/firebase-auth.js"></script>
-    <script src="/__/firebase/7.15.5/firebase-firestore.js"></script>
-    <script src="/__/firebase/7.15.5/firebase-database.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        </section>
+
+
+
+        <script src="jquery-2.1.4.min.js"></script>
+
+        <script>
+            'use strict';
+
+            $(document).ready(function() {
+
+
+
+                var width = 100,
+                    perfData = window.performance.timing,
+                    EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
+                    time = ((EstimatedTime / 1000) % 50) * 100
+
+
+                // Percentage Increment Animation
+                var PercentageID = $(".percentage"),
+                    start = 0,
+                    end = 100,
+                    durataion = time;
+                animateValue(PercentageID, start, end, durataion);
+
+                function animateValue(id, start, end, duration) {
+
+                    var range = end - start,
+                        current = start,
+                        increment = end > start ? 1 : -1,
+                        stepTime = Math.abs(Math.floor(duration / range)),
+                        obj = $(id);
+
+
+                    var timer = setInterval(function() {
+                        current += increment;
+                        $(obj).text(current);
+                        //obj.innerHTML = current;
+                        if (current == end) {
+                            clearInterval(timer);
+                        }
+                    }, stepTime);
+                }
+
+
+
+                setTimeout(function() {
+                    $('.preloader').fadeOut();
+
+                    $('.cd-transition-layer').addClass('closing').delay(1000).queue(function() {
+                        $(this).removeClass("visible closing opening").dequeue();
+                    });
+
+                }, time);
+
+
+
+
+                // FADE OUT EFFECT WHEN CLICK A LINK
+                $(document).on("click", "a:not(.lightbox)", function() {
+                    var newUrl = $(this).attr("href");
+                    if (!newUrl || newUrl[0] === "#") {
+                        location.hash = newUrl;
+                        return;
+                    }
+                    $("html").fadeOut(function() {
+                        location = newUrl;
+                    });
+                    return false;
+                });
+
+
+                var paget = $(".page-title .title").text();
+
+                $(".page-title").append("<span></span>");
+                $(".page-title span").append(paget);
+
+
+
+                //posts page hover 
+                $('.blog-post .blog-link').hover(function() {
+                    $(this).parent('.content-outter').parent('.blog-post').toggleClass('mousef');
+                    $(this).parent('.blog-post').toggleClass('mousef');
+                });
+
+            });
+
+
+
+
+            $(window).load(function() {
+
+
+                function smokeeffect() {
+                    var modalTrigger = $('.nav-icon'),
+                        transitionLayer = $('.cd-transition-layer'),
+                        transitionBackground = transitionLayer.children(),
+                        modalWindow = $('.full-menu');
+
+                    var frameProportion = 1.78, //png frame aspect ratio
+                        frames = 25, //number of png frames
+                        resize = false;
+
+                    //set transitionBackground dimentions
+                    setLayerDimensions();
+                    $(window).on('resize', function() {
+                        if (!resize) {
+                            resize = true;
+                            (!window.requestAnimationFrame) ? setTimeout(setLayerDimensions, 300): window.requestAnimationFrame(setLayerDimensions);
+                        }
+                    });
+
+                    //open modal window
+                    modalTrigger.on('click', function(event) {
+                        event.preventDefault();
+                        transitionLayer.addClass('visible opening');
+                        var delay = ($('.no-cssanimations').length > 0) ? 0 : 600;
+                        setTimeout(function() {
+                            modalWindow.addClass('visible');
+                        }, delay);
+                    });
+
+                    //close modal window
+                    modalWindow.on('click', '.modal-close', function(event) {
+                        event.preventDefault();
+                        transitionLayer.addClass('closing');
+                        modalWindow.removeClass('visible');
+                        transitionBackground.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
+                            transitionLayer.removeClass('closing opening visible');
+                            transitionBackground.off('webkitAnimationEnd oanimationend msAnimationEnd animationend');
+                        });
+                    });
+
+                    function setLayerDimensions() {
+                        var windowWidth = $(window).width(),
+                            windowHeight = $(window).height(),
+                            layerHeight, layerWidth;
+
+                        if (windowWidth / windowHeight > frameProportion) {
+                            layerWidth = windowWidth;
+                            layerHeight = layerWidth / frameProportion;
+                        } else {
+                            layerHeight = windowHeight * 1.2;
+                            layerWidth = layerHeight * frameProportion;
+                        }
+
+                        transitionBackground.css({
+                            'width': layerWidth * frames + 'px',
+                            'height': layerHeight + 'px',
+                        });
+
+                        resize = false;
+                    }
+
+                }
+                smokeeffect()
+
+
+
+                /*--------------------------------------------------
+                 Hero Section Height
+                ---------------------------------------------------*/
+                function homeh() {
+                    var hometext = $('.main')
+
+                    hometext.css({
+                        "height": $(window).height() + "px"
+                    });
+                }
+                homeh();
+                $(window).resize(homeh);
+
+
+                $(".page-menu li:not(.social) a, .portfolio_filter ul li a").append("<span></span>");
+
+                $('.nav-icon').on("click", function() {
+                    $(this).toggleClass('modal-close');
+                });
+
+
+
+            }); // document load end
+        </script>
+
+    </div>
 </body>
 
 </html>
