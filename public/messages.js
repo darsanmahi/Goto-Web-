@@ -22,6 +22,7 @@
     const b1 = localStorage.getItem("b1");
     const p1 = localStorage.getItem("p1");
     const r1 = localStorage.getItem("r1");
+    const logoutbtn = document.getElementById('logoutbtn');
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             dropbtn.addEventListener("click", function() {
@@ -35,9 +36,11 @@
                     console.log(error);
                 });
             });
-        } else {
-            alert("Oops! Logged Out");
-            window.location = "index.html";
+            logoutbtn.addEventListener("click", function() {
+                firebase.auth().signOut();
+                alert("Logged Out!");
+                window.location = "index.html";
+            });
         }
     });
 
