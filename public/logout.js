@@ -19,8 +19,6 @@
                 alert("Logged Out!");
                 window.location = "index.html";
             });
-        } else {
-            console.log('Oops! Logged Out');
         }
     });
 })();

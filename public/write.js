@@ -49,7 +49,7 @@
                 const mom1 = mom.value;
 
                 function writeUserData(userId) {
-                    firebase.database().ref('users/' + userId + '/' + today).set({
+                    firebase.database().ref('users/' + userId + '/Diary' + '/' + today).set({
                         mom: mom1,
                     }).then(function() {
                         alert("Memories Recorded");

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Remind Me!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<nav class="navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+        <img src="./images/b515e6c2-9e5f-486e-908d-dc3ecd0f8ab4_200x200.png" width="50" height="50" alt="Team 2.0" loading="lazy">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="category.html"><i class="fa fa-home"></i> Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index1.html"><i class="fa fa-book"></i> Diary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="indexexpense.html"><i class="fa fa-money"></i> Expenses Tracker </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fa fa-tasks"></i> Existing Tasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="create_event.html"><i class="fa fa-tasks"></i> New Task</a>
+            </li>
+        </ul>
+        <button class="btn btn-light" id="logoutbtn"><i class="fa fa-sign-out"></i> Sign Out
+    </div>
+</nav>
+
+<body>
+    <h3 style="margin:25px; color: black;">Forthcoming Events</h3>
+    <div class="card" id="forthcomings" style="margin:0px 20px; visibility: hidden;">
+        <div class="card-body" id="eventdisplay">
+        </div>
+    </div>
+    <div class="my-class" id="forthcomingexist" style="display:grid; grid-template-columns: repeat(2,1fr);  margin-right:20px; margin-bottom:40px; visibility: hidden;">
+        <div class="card" style="margin-top:20px; margin-left:20px;" id="forth">
+        </div>
+    </div>
+
+
+    <h3 style="margin:25px; color: black;">Pending Events</h3>
+    <div class="card" id="pending" style="margin:0px 20px;visibility:  hidden;">
+        <div class="card-body" id="nopendeve">
+        </div>
+    </div>
+    <div class="my-class" style="display:grid; grid-template-columns: repeat(2,1fr);  margin-right:20px; margin-bottom:20px; visibility: hidden;">
+        <div class="card" style="margin-left:20px; margin-top:20px" id="pend">
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.15.5/firebase-app.js"></script>
+
+    <script src="/__/firebase/7.15.5/firebase-analytics.js"></script>
+
+    <script src="/__/firebase/7.15.5/firebase-auth.js"></script>
+    <script src="/__/firebase/7.15.5/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.15.5/firebase-database.js"></script>
+    <script src="./users.js"></script>
+    <script src="remeve.js"></script>
+
+</body>
+
+</html>

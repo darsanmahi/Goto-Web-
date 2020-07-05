@@ -21,7 +21,7 @@
         if (user) {
             var userId = user.uid;
             const db = firebase.database();
-            db.ref('users/' + userId).on("value", function(snapshot) {
+            db.ref('users/' + userId + '/Diary').on("value", function(snapshot) {
                 var data = snapshot.val();
                 for (i in data) {
                     var divider = document.createElement("div");
@@ -41,7 +41,7 @@
                     }
                     para.innerHTML = day;
                     document.getElementById(name).appendChild(para);
-                    db.ref('users/' + userId + '/' + i + '/mom').on("value", function(snapshot) {
+                    db.ref('users/' + userId + '/Diary' + '/' + i + '/mom').on("value", function(snapshot) {
                         var para1 = document.createElement("P");
                         para1.innerHTML = snapshot.val();
                         document.getElementById(name).appendChild(para1);
@@ -65,7 +65,7 @@
                             console.log(error.message);
                         });
                     });
-                    db.ref('users/' + userId + '/' + i + '/mom').on("value", function(snapshot) {
+                    db.ref('users/' + userId + '/Diary' + '/' + i + '/mom').on("value", function(snapshot) {
                         firebase.storage().ref().child(userId + '/' + i + '.mp4').getDownloadURL().then(function(url) {
                             var divid1 = document.createElement("div");
                             if (l == 0) {
@@ -105,8 +105,6 @@
                 alert("Logged Out!");
                 window.location = "index.html";
             });
-        } else {
-            console.log('Oops! Logged Out');
         }
     });
 })();

@@ -272,7 +272,6 @@ h3 {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    padding: 100px;
     text-align: center;
     color: white;
 }
@@ -341,6 +340,18 @@ iframe {
     background-image: url(../images/inspirational-quotes-written-on-a-planner-636237.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+#forgotpword {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.bg-image2 {
+    background-image: url(../images/black-and-white-blur-close-up-lock-411227.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
 }

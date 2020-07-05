@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Remind Me!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/style.css">
+    <style>
+        #createevent {
+            background-image: url(../images/person-writing-on-a-notebook-4238524.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+        }
+    </style>
+</head>
+
+<nav class="navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+        <img src="./images/b515e6c2-9e5f-486e-908d-dc3ecd0f8ab4_200x200.png" width="50" height="50" alt="Team 2.0" loading="lazy">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="category.html"><i class="fa fa-home"></i> Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index1.html"><i class="fa fa-book"></i> Diary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="indexexpense.html"><i class="fa fa-money"></i> Expenses Tracker </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="users.html"><i class="fa fa-tasks"></i> Existing Tasks</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fa fa-tasks"></i> New Task</a>
+            </li>
+        </ul>
+        <button class="btn btn-light" id="logoutbtn"><i class="fa fa-sign-out"></i> Sign Out
+    </div>
+</nav>
+
+
+<body id="createevent">
+    <div class="container" style="padding:50px">
+        <h2 style="padding-bottom:20px">Create Event</h2>
+        <div class="row">
+            <div class="form-group col-lg-5">
+                <label for="eventname">Event Name</label>
+                <input class="form-control" type="text" name="eventname" id="eventname" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-5">
+                <label for="eventdesc">Description</label>
+                <textarea class="form-control" name="eventdesc" id="eventdesc" rows="5" cols="80"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-5">
+                <label for="eventdate">Deadline</label>
+                <input class="form-control" type="date" name="eventdate" id="eventdate" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary offset-1" id="addevent">Add Event</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.15.5/firebase-app.js"></script>
+
+    <script src="/__/firebase/7.15.5/firebase-analytics.js"></script>
+
+    <script src="/__/firebase/7.15.5/firebase-auth.js"></script>
+    <script src="/__/firebase/7.15.5/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.15.5/firebase-database.js"></script>
+    <script src="./createevent.js"></script>
+    </body>
+
+</html>

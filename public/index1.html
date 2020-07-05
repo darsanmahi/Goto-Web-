@@ -25,7 +25,31 @@
         };
     </script>
 </head>
-
+<nav class="navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+        <img src="./images/b515e6c2-9e5f-486e-908d-dc3ecd0f8ab4_200x200.png" width="50" height="50" alt="Team 2.0" loading="lazy">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="category.html"><i class="fa fa-home"></i> Home </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fa fa-book"></i> Diary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="indexexpense.html"><i class="fa fa-money"></i> Expenses Tracker </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="users.html"><i class="fa fa-tasks"></i> To-do list </a>
+            </li>
+        </ul>
+        <button class="btn btn-light" id="logoutbtn"><i class="fa fa-sign-out"></i> Sign Out </button>
+    </div>
+</nav>
 <div id="loader">
     <div class="d-flex justify-content-center">
         <div class="spinner-grow text-dark m-5" style="width: 3rem; height: 3rem;" role="status">
@@ -37,7 +61,7 @@
 <body id="home1body">
     <div class="container">
         <div class="row row-header" id="go-to">
-            <div class="col-12">
+            <div class="col-12" style="padding-top: 100px;">
                 <h2>The Go-to Diary! An online diary to have both personal diary and an interactive one <i class="fa fa-heart"></i>
                 </h2>
             </div>
@@ -50,11 +74,6 @@
         <div class="row row-content" id="personal">
             <div class="col-12">
                 <a href="home1.html" class="btn btn-info"><i class="fa fa-key"></i> Personal Diary </a>
-            </div>
-        </div>
-        <div class="row row-content" id="personal">
-            <div class="col-12">
-                <button class="btn btn-light" id="logoutbtn"><i class="fa fa-sign-out"></i> Sign Out</button>
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@
         const email1 = email.value;
         const pword1 = pword.value;
         firebase.auth().signInWithEmailAndPassword(email1, pword1).then(function() {
-            window.location = "index1.html";
+            window.location = "category.html";
         }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
