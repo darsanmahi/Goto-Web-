@@ -36,8 +36,6 @@
                     var data = snapshot.val();
                     var data1 = Number(data);
                     var rem = data1 - amt1;
-                    console.log(rem);
-                    console.log(data);
                     window.localStorage.setItem("remam", rem);
                 });
                 var remain = window.localStorage.getItem("remam");
