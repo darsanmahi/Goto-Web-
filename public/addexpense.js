@@ -32,13 +32,17 @@
                 }).then(alert("Expenses added successfully")).catch(function(error) {
                     alert(error.message);
                 });
-                db.ref('users/' + userId + '/Balance/Amount').on("value", function(snapshot) {
+                db.ref('users/' + userId + '/Balance' + '/Amount').on("value", function(snapshot) {
                     var data = snapshot.val();
                     var data1 = Number(data);
+                    console.log(data1);
+                    console.log(amt1);
                     var rem = data1 - amt1;
+                    console.log(data1 - amt1);
                     window.localStorage.setItem("remam", rem);
                 });
                 var remain = window.localStorage.getItem("remam");
+                console.log("remam" + remain);
                 db.ref('users/' + userId + '/Balance').set({
                     Amount: remain
                 }).catch(function(error) {
