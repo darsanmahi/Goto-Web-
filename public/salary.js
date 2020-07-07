@@ -23,12 +23,12 @@
                 var bud1 = bud.value;
                 var db = firebase.database();
                 db.ref('users/' + userId + '/Budget').set({
-                    Amount: bud1
+                    Amount: Number(bud1)
                 }).then(alert("Budget Added!")).catch(function(error) {
                     alert(error.message);
                 });
                 db.ref('users/' + userId + '/Balance').set({
-                    Amount: bud1
+                    Amount: Number(bud1)
                 }).then(alert("Balance Added!")).catch(function(error) {
                     alert(error.message);
                 });
@@ -36,29 +36,27 @@
             incbtn.addEventListener("click", function() {
                 var inc1 = Number(inc.value);
                 var db = firebase.database();
-                db.ref('users/' + userId + '/Budget/Amount').on("value", function(snapshot) {
+                db.ref('users/' + userId + '/Budget').once("value", function(snapshot) {
                     var data = snapshot.val();
-                    var data1 = Number(data);
+                    var data1 = Number(data.Amount);
                     var add = data1 + inc1;
-                    window.localStorage.setItem("addamt", add);
+                    db.ref('users/' + userId + '/Budget').set({
+                        Amount: Number(add)
+                    }).then(function() {
+                        alert("Budget Updated!");
+                    }).catch(function(error) {
+                        alert(error.message);
+                    });
                 });
-                var add1 = window.localStorage.getItem("addamt");
-                db.ref('users/' + userId + '/Budget').set({
-                    Amount: add1
-                }).then(alert("Budget Updated!")).catch(function(error) {
-                    alert(error.message);
-                });
-                db.ref('users/' + userId + '/Balance/Amount').on("value", function(snapshot) {
+                db.ref('users/' + userId + '/Balance/Amount').once("value", function(snapshot) {
                     var data = snapshot.val();
                     var data1 = Number(data);
                     var addb = data1 + inc1;
-                    window.localStorage.setItem("addbal", addb);
-                });
-                var addb1 = window.localStorage.getItem("addbal");
-                db.ref('users/' + userId + '/Balance').set({
-                    Amount: addb1
-                }).then(alert("Balance Updated!")).catch(function(error) {
-                    alert(error.message);
+                    db.ref('users/' + userId + '/Balance').set({
+                        Amount: Number(addb)
+                    }).then(alert("Balance Updated!")).catch(function(error) {
+                        alert(error.message);
+                    });
                 });
             });
             logout.addEventListener("click", function() {
