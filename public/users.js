@@ -18,6 +18,7 @@
     var count1 = 10;
     var count2 = 20;
     var count3 = 30;
+    var flag = 1;
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -131,11 +132,33 @@
                     const deleve = document.getElementById('deleve');
                     deleve.addEventListener("click", function() {
                         var name = prompt("Enter the name of the event");
-                        db.ref('users/' + userID + '/Todo' + '/' + name).remove().then(function() {
-                            alert("Event deleted successfully");
-                            window.location = "users.html";
-                        }).catch(function(error) {
-                            alert(error.message);
+                        db.ref('users/' + userID + '/Todo').on("value", function(snapshot) {
+                            var data3 = snapshot.val();
+                            console.log(data3);
+                            for (i in data3) {
+                                db.ref('users/' + userID + '/Todo' + i).on("value", function(snapshot) {
+                                    var data4 = snapshot.val();
+                                    console.log(data4);
+                                    for (j in data4) {
+                                        console.log('J' + j);
+                                        if (j != name) {
+                                            flag = 0;
+                                        } else {
+                                            flag = 1;
+                                        }
+                                    }
+                                });
+                                if (flag == 1) {
+                                    db.ref('users/' + userID + '/Todo' + '/' + i + '/' + name).remove().then(function() {
+                                        alert("Event deleted successfully");
+                                        //window.location = "users.html";
+                                    }).catch(function(error) {
+                                        alert(error.message);
+                                    });
+                                } else {
+                                    alert("No Such Event Exist!");
+                                }
+                            }
                         });
                     });
                 }

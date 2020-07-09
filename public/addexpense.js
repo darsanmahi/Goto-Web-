@@ -16,8 +16,6 @@
     const reas = document.getElementById('reason');
     const addbtn = document.getElementById('addexpensebtn');
     const logout = document.getElementById('logoutbtn');
-    var i = 0;
-    var j = 0;
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             var userId = user.uid;
@@ -32,39 +30,43 @@
                 var amt1 = amtspent.value;
                 var reason = reas.value;
                 var datef = date.value;
-                console.log(datef);
-                firebase.database().ref('users/' + userId + '/Expense/' + datef).once("value", function(snapshot) {
-                    var datas1 = snapshot.val();
-                    console.log(datas1);
-                    if (datas1) {
-                        var datas1amt = datas1.Amount;
-                        var datas1reas = datas1.Name;
-                    }
-                    var exisname2 = reason;
-                    var amt2 = amt1;
-                    if (datas1reas) {
-                        exisname2 = reason + ', ' + datas1reas;
-                    }
-                    if (datas1amt) {
-                        amt2 = Number(amt1) + Number(datas1amt);
-                    }
-                    console.log('EXISNAME2 ' + exisname2);
-                    console.log("AMT2 " + amt2);
-                    firebase.database().ref('users/' + userId + '/Expense' + '/' + datef).set({
-                        Name: exisname2,
-                        Amount: Number(amt2)
-                    }).then(alert("Expenses added successfully")).catch(function(error) {
-                        alert(error.message);
+                if (amt1 == ' ' || reason == '' || !datef) {
+                    alert("Invalid Input");
+                } else {
+                    console.log(datef);
+                    firebase.database().ref('users/' + userId + '/Expense/' + datef).once("value", function(snapshot) {
+                        var datas1 = snapshot.val();
+                        console.log(datas1);
+                        if (datas1) {
+                            var datas1amt = datas1.Amount;
+                            var datas1reas = datas1.Name;
+                        }
+                        var exisname2 = reason;
+                        var amt2 = amt1;
+                        if (datas1reas) {
+                            exisname2 = reason + ', ' + datas1reas;
+                        }
+                        if (datas1amt) {
+                            amt2 = Number(amt1) + Number(datas1amt);
+                        }
+                        console.log('EXISNAME2 ' + exisname2);
+                        console.log("AMT2 " + amt2);
+                        firebase.database().ref('users/' + userId + '/Expense' + '/' + datef).set({
+                            Name: exisname2,
+                            Amount: Number(amt2)
+                        }).then(alert("Expenses added successfully")).catch(function(error) {
+                            alert(error.message);
+                        });
+                        var data11 = window.localStorage.getItem("data1");
+                        var remain = data11 - amt1;
+                        console.log("remam" + remain);
+                        firebase.database().ref('users/' + userId + '/Balance').set({
+                            Amount: Number(remain)
+                        }).catch(function(error) {
+                            alert(error.message);
+                        });
                     });
-                    var data11 = window.localStorage.getItem("data1");
-                    var remain = data11 - amt1;
-                    console.log("remam" + remain);
-                    firebase.database().ref('users/' + userId + '/Balance').set({
-                        Amount: Number(remain)
-                    }).catch(function(error) {
-                        alert(error.message);
-                    });
-                });
+                }
                 console.log(reason);
             });
             logout.addEventListener("click", function() {

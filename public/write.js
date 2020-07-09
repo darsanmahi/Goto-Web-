@@ -47,17 +47,20 @@
             });
             dropbtn.addEventListener('click', function() {
                 const mom1 = mom.value;
+                if (mom1 == ' ') {
+                    alert("Empty Input");
+                } else {
+                    function writeUserData(userId) {
+                        firebase.database().ref('users/' + userId + '/Diary' + '/' + today).set({
+                            mom: mom1,
+                        }).then(function() {
+                            alert("Memories Recorded");
+                            window.location = "home1.html";
+                        });
+                    }
 
-                function writeUserData(userId) {
-                    firebase.database().ref('users/' + userId + '/Diary' + '/' + today).set({
-                        mom: mom1,
-                    }).then(function() {
-                        alert("Memories Recorded");
-                        window.location = "home1.html";
-                    });
+                    writeUserData(userId);
                 }
-
-                writeUserData(userId);
             });
         }
     });

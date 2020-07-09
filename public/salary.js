@@ -22,42 +22,50 @@
             budbtn.addEventListener("click", function() {
                 var bud1 = bud.value;
                 var db = firebase.database();
-                db.ref('users/' + userId + '/Budget').set({
-                    Amount: Number(bud1)
-                }).then(alert("Budget Added!")).catch(function(error) {
-                    alert(error.message);
-                });
-                db.ref('users/' + userId + '/Balance').set({
-                    Amount: Number(bud1)
-                }).then(alert("Balance Added!")).catch(function(error) {
-                    alert(error.message);
-                });
+                if (!bud1) {
+                    alert("Invalid Input");
+                } else {
+                    db.ref('users/' + userId + '/Budget').set({
+                        Amount: Number(bud1)
+                    }).then(alert("Budget Added!")).catch(function(error) {
+                        alert(error.message);
+                    });
+                    db.ref('users/' + userId + '/Balance').set({
+                        Amount: Number(bud1)
+                    }).then(alert("Balance Added!")).catch(function(error) {
+                        alert(error.message);
+                    });
+                }
             });
             incbtn.addEventListener("click", function() {
                 var inc1 = Number(inc.value);
                 var db = firebase.database();
-                db.ref('users/' + userId + '/Budget').once("value", function(snapshot) {
-                    var data = snapshot.val();
-                    var data1 = Number(data.Amount);
-                    var add = data1 + inc1;
-                    db.ref('users/' + userId + '/Budget').set({
-                        Amount: Number(add)
-                    }).then(function() {
-                        alert("Budget Updated!");
-                    }).catch(function(error) {
-                        alert(error.message);
+                if (inc1 == 0) {
+                    alert("Invalid Input");
+                } else {
+                    db.ref('users/' + userId + '/Budget').once("value", function(snapshot) {
+                        var data = snapshot.val();
+                        var data1 = Number(data.Amount);
+                        var add = data1 + inc1;
+                        db.ref('users/' + userId + '/Budget').set({
+                            Amount: Number(add)
+                        }).then(function() {
+                            alert("Budget Updated!");
+                        }).catch(function(error) {
+                            alert(error.message);
+                        });
                     });
-                });
-                db.ref('users/' + userId + '/Balance/Amount').once("value", function(snapshot) {
-                    var data = snapshot.val();
-                    var data1 = Number(data);
-                    var addb = data1 + inc1;
-                    db.ref('users/' + userId + '/Balance').set({
-                        Amount: Number(addb)
-                    }).then(alert("Balance Updated!")).catch(function(error) {
-                        alert(error.message);
+                    db.ref('users/' + userId + '/Balance/Amount').once("value", function(snapshot) {
+                        var data = snapshot.val();
+                        var data1 = Number(data);
+                        var addb = data1 + inc1;
+                        db.ref('users/' + userId + '/Balance').set({
+                            Amount: Number(addb)
+                        }).then(alert("Balance Updated!")).catch(function(error) {
+                            alert(error.message);
+                        });
                     });
-                });
+                }
             });
             logout.addEventListener("click", function() {
                 firebase.auth().signOut();

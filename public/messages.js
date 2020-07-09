@@ -27,14 +27,18 @@
         if (user) {
             dropbtn.addEventListener("click", function() {
                 const mom1 = mom.value;
-                db.ref('users/' + b1 + '/' + p1 + '/' + today + '/' + r1).set({
-                    mom: mom1
-                }).then(function() {
-                    alert("Memories recorded!!!");
-                    window.location = "collabdisplay.html";
-                }).catch(function(error) {
-                    console.log(error);
-                });
+                if (mom1 == ' ') {
+                    alert("Invalid Input");
+                } else {
+                    db.ref('users/' + b1 + '/' + p1 + '/' + today + '/' + r1).set({
+                        mom: mom1
+                    }).then(function() {
+                        alert("Memories recorded!!!");
+                        window.location = "collabdisplay.html";
+                    }).catch(function(error) {
+                        console.log(error);
+                    });
+                }
             });
             logoutbtn.addEventListener("click", function() {
                 firebase.auth().signOut();
