@@ -47,7 +47,7 @@
             });
             dropbtn.addEventListener('click', function() {
                 const mom1 = mom.value;
-                if (mom1 == ' ') {
+                if (!mom1) {
                     alert("Empty Input");
                 } else {
                     function writeUserData(userId) {

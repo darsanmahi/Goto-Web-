@@ -30,7 +30,7 @@
                 var amt1 = amtspent.value;
                 var reason = reas.value;
                 var datef = date.value;
-                if (amt1 == ' ' || reason == '' || !datef) {
+                if (!amt1 || reason == '' || !datef) {
                     alert("Invalid Input");
                 } else {
                     console.log(datef);

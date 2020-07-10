@@ -31,63 +31,72 @@
         const p1 = pword.value;
         const r1 = refname.value;
         const db = firebase.database();
-        db.ref('users/' + b1).on("value", function(snapshot) {
-            var data = snapshot.val();
-            for (i in data) {
-                if (p1 == i) {
-                    db.ref('users/' + b1 + '/' + p1).on("value", function(snapshot) {
-                        var data1 = snapshot.val();
-                        console.log(data1);
-                        for (j in data1) {
-                            db.ref('users/' + b1 + '/' + p1 + '/' + j).on("value", function(snapshot) {
-                                var fam = snapshot.val();
-                                for (k in fam) {
-                                    if (k == r1) {
-                                        flag = 0;
-                                        console.log('FLAG ' + flag);
-                                        localStorage.setItem("b1", b1);
-                                        localStorage.setItem("p1", p1);
-                                        localStorage.setItem("r1", r1);
-                                        window.location = "collabdisplay.html";
-                                        break;
-                                    } else {
-                                        flag = 1;
+        if (!b1 || !p1 || !r1) {
+            alert("Invalid Input");
+        } else {
+            db.ref('users/' + b1).on("value", function(snapshot) {
+                var data = snapshot.val();
+                for (i in data) {
+                    if (p1 == i) {
+                        db.ref('users/' + b1 + '/' + p1).on("value", function(snapshot) {
+                            var data1 = snapshot.val();
+                            console.log(data1);
+                            for (j in data1) {
+                                db.ref('users/' + b1 + '/' + p1 + '/' + j).on("value", function(snapshot) {
+                                    var fam = snapshot.val();
+                                    for (k in fam) {
+                                        if (k == r1) {
+                                            flag = 0;
+                                            console.log('FLAG ' + flag);
+                                            localStorage.setItem("b1", b1);
+                                            localStorage.setItem("p1", p1);
+                                            localStorage.setItem("r1", r1);
+                                            window.location = "collabdisplay.html";
+                                            break;
+                                        } else {
+                                            flag = 1;
+                                        }
                                     }
-                                }
-                                if (flag == 1) {
-                                    alert("You are not a member of this book! Join and start writing");
-                                }
-                            });
-                        }
-                    });
-                } else if (p1 == " ") {
-                    alert("Please enter Password");
-                } else {
-                    alert("Invalid password");
-                    break;
+                                    if (flag == 1) {
+                                        alert("You are not a member of this book! Join and start writing");
+                                    }
+                                });
+                            }
+                        });
+                    } else if (p1 == " ") {
+                        alert("Please enter Password");
+                    } else {
+                        alert("Invalid password");
+                        break;
+                    }
                 }
-            }
-        });
+            });
+        }
+
     });
     bookjoin.addEventListener('click', function() {
         const b1 = bookid.value;
         const p1 = pword.value;
         const r1 = refname.value;
         const db = firebase.database();
-        db.ref("users/" + b1).on("value", function(snapshot) {
-            var data = snapshot.val();
-            for (i in data) {
-                if (p1 == i) {
-                    db.ref("users/" + b1 + '/' + p1 + '/' + today + '/' + r1).set({
-                        mom: "Hey I am new here!"
-                    }).then(window.location = "collabdisplay.html").catch(function(error) {
-                        console.log(error);
-                    });
-                } else {
-                    alert("Invalid password of the book");
+        if (!b1 || !p1 || !r1) {
+            alert("Invalid Input");
+        } else {
+            db.ref("users/" + b1).on("value", function(snapshot) {
+                var data = snapshot.val();
+                for (i in data) {
+                    if (p1 == i) {
+                        db.ref("users/" + b1 + '/' + p1 + '/' + today + '/' + r1).set({
+                            mom: "Hey I am new here!"
+                        }).then(window.location = "collabdisplay.html").catch(function(error) {
+                            console.log(error);
+                        });
+                    } else {
+                        alert("Invalid password of the book");
+                    }
                 }
-            }
-        });
+            });
+        }
     });
     bookcreate.addEventListener("click", function() {
         const b1 = bookid.value;
@@ -95,33 +104,37 @@
         const r1 = refname.value;
         const db = firebase.database();
         flag = 1;
-        db.ref("users/").on("value", function(snapshot) {
-            var daa = snapshot.val();
-            for (i in daa) {
-                console.log(i, b1);
-                if (i === b1) {
-                    flag = 1;
-                    break;
-                } else {
-                    flag = 0;
+        if (!b1 || !p1 || !r1) {
+            alert("Invalid Input");
+        } else {
+            db.ref("users/").on("value", function(snapshot) {
+                var daa = snapshot.val();
+                for (i in daa) {
+                    console.log(i, b1);
+                    if (i === b1) {
+                        flag = 1;
+                        break;
+                    } else {
+                        flag = 0;
+                    }
                 }
-            }
-        });
-        console.log(flag);
-        if (flag === 0) {
-            db.ref("users/" + b1 + '/' + p1 + '/' + today + '/' + r1).set({
-                mom: "New Book up here!"
-            }).then(function() {
-                alert("Book created successfully");
-                localStorage.setItem("b1", b1);
-                localStorage.setItem("p1", p1);
-                localStorage.setItem("r1", r1);
-                window.location = "collabdisplay.html";
-            }).catch(function(error) {
-                console.log(error);
             });
-        } else if (flag === 1) {
-            alert("Book id already taken");
+            console.log(flag);
+            if (flag === 0) {
+                db.ref("users/" + b1 + '/' + p1 + '/' + today + '/' + r1).set({
+                    mom: "New Book up here!"
+                }).then(function() {
+                    alert("Book created successfully");
+                    localStorage.setItem("b1", b1);
+                    localStorage.setItem("p1", p1);
+                    localStorage.setItem("r1", r1);
+                    window.location = "collabdisplay.html";
+                }).catch(function(error) {
+                    console.log(error);
+                });
+            } else if (flag === 1) {
+                alert("Book id already taken");
+            }
         }
     });
     const logoutbtn = document.getElementById('logoutbtn');
