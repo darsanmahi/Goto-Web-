@@ -30,16 +30,7 @@
                     divider.setAttribute("class", "col-12 col-sm-12");
                     document.getElementById("content").appendChild(divider);
                     var para = document.createElement("H3");
-                    for (k = 0; k < name.length; k++) {
-                        if (k == 2) {
-                            day = day + '/' + name[k];
-                        } else if (k == 4) {
-                            day = day + '/' + name[k];
-                        } else {
-                            day = day + name[k];
-                        }
-                    }
-                    para.innerHTML = day;
+                    para.innerHTML = i;
                     document.getElementById(name).appendChild(para);
                     db.ref('users/' + userId + '/Diary' + '/' + i + '/mom').on("value", function(snapshot) {
                         var para1 = document.createElement("P");

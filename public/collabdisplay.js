@@ -29,16 +29,7 @@
             divider.setAttribute("style", "border-style:solid;");
             document.getElementById('two').appendChild(divider);
             var para = document.createElement("h3");
-            for (k = 0; k < name.length; k++) {
-                if (k == 2) {
-                    day = day + '/' + name[k];
-                } else if (k == 4) {
-                    day = day + '/' + name[k];
-                } else {
-                    day = day + name[k];
-                }
-            }
-            para.innerHTML = day;
+            para.innerHTML = name;
             document.getElementById("one").appendChild(para);
             db.ref('users/' + b1 + '/' + p1 + '/' + i).on("value", function(snapshot) {
                 var data1 = snapshot.val();
@@ -56,7 +47,6 @@
                     });
                 }
             });
-            day = "";
         }
     });
 })();
