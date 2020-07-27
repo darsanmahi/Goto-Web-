@@ -31,6 +31,7 @@
             var userID = user.uid;
 
             function forthcome(i) {
+                console.log(i);
                 document.getElementById('forthcomingexist').setAttribute("style", "visibility: shown;");
                 var divider = document.createElement('div');
                 divider.setAttribute("class", "card-body");
@@ -41,28 +42,19 @@
                 h51.setAttribute("id", count);
                 document.getElementById('forthdiv').appendChild(h51);
                 document.getElementById(count).innerHTML = i;
-                db.ref('users/' + userID + '/Todo' + '/' + i).on("value", function(snapshot) {
-                    var data1 = snapshot.val();
-                    for (j in data1) {
-                        var h5 = document.createElement('h5');
-                        h5.setAttribute("class", "card-title");
-                        h5.setAttribute("id", count1);
-                        document.getElementById('forthdiv').appendChild(h5);
-                        document.getElementById(count1).innerHTML = j;
-                        db.ref('users/' + userID + '/Todo' + '/' + i + '/' + j).on("value", function(snapshot) {
-                            var data2 = snapshot.val();
-                            var p3 = document.createElement('p');
-                            p3.setAttribute("class", "card-text");
-                            p3.setAttribute("id", count2);
-                            document.getElementById('forthdiv').appendChild(p3);
-                            document.getElementById(count2).innerHTML = data2.Description;
-                        });
-                        count1++;
-                        count2++;
-                    }
-                    count++;
+                db.ref('users/' + userID + '/Todo/' + i).once("value", function(snapshot) {
+                    var dataaa = snapshot.val();
+                    console.log(dataaa);
+                    var p3 = document.createElement('p');
+                    p3.setAttribute("class", "card-text");
+                    p3.setAttribute("id", count2);
+                    document.getElementById('forthdiv').appendChild(p3);
+                    document.getElementById(count2).innerHTML = "Description: " + dataaa.Description;
+                    count1++;
+                    count2++;
+                    document.getElementById(count).innerHTML += "(Deadline: " + dataaa.Date + ")";
                 });
-
+                count++;
             }
 
             function pending(i) {
@@ -72,40 +64,33 @@
                 divider1.setAttribute("id", "penddiv");
                 document.getElementById('pend').appendChild(divider1);
                 var h511 = document.createElement('h5');
-                h511.setAttribute("class", "card-title");
+                h511.setAttribute("class", "card-header");
                 h511.setAttribute("id", count3);
                 document.getElementById('penddiv').appendChild(h511);
                 document.getElementById(count3).innerHTML = i;
-                db.ref('users/' + userID + '/Todo' + '/' + i).on("value", function(snapshot) {
-                    var data1 = snapshot.val();
-                    for (j in data1) {
-                        var h5 = document.createElement('h5');
-                        h5.setAttribute("class", "card-header");
-                        h5.setAttribute("id", count4);
-                        document.getElementById('penddiv').appendChild(h5);
-                        document.getElementById(count4).innerHTML = j;
-                        db.ref('users/' + userID + '/Todo' + '/' + i + '/' + j).on("value", function(snapshot) {
-                            var data2 = snapshot.val();
-                            var p3 = document.createElement('p');
-                            p3.setAttribute("class", "card-text");
-                            p3.setAttribute("id", count5);
-                            document.getElementById('penddiv').appendChild(p3);
-                            document.getElementById(count5).innerHTML = data2.Description;
-                        });
-                        count4++;
-                        count5++;
-                    }
-                    count3++;
+                db.ref('users/' + userID + '/Todo/' + i).once("value", function(snapshot) {
+                    var dataaa = snapshot.val();
+                    var p3 = document.createElement('p');
+                    p3.setAttribute("class", "card-text");
+                    p3.setAttribute("id", count5);
+                    document.getElementById('penddiv').appendChild(p3);
+                    document.getElementById(count5).innerHTML = "Description: " + dataaa.Description;
+                    count4++;
+                    count5++;
+                    document.getElementById(count3).innerHTML += "(Deadline: " + dataaa.Date + ")";
                 });
+                count3++;
             }
             db.ref('users/' + userID + '/Todo' + '/').on("value", function(snapshot) {
                 var data = snapshot.val();
+                console.log(data);
                 if (data) {
                     for (i in data) {
-                        if (i > today) {
+                        if (data[i].Date > today) {
+                            console.log(data[i].Date);
                             forthcome(i);
                         }
-                        if (i <= today) {
+                        if (data[i].Date <= today) {
                             pending(i);
                         }
                     }
@@ -141,32 +126,23 @@
                             var data3 = snapshot.val();
                             console.log(data3);
                             for (i in data3) {
-                                db.ref('users/' + userID + '/Todo' + '/' + i).on("value", function(snapshot) {
-                                    var data4 = snapshot.val();
-                                    console.log(data4);
-                                    for (j in data4) {
-                                        if (j != name) {
-                                            console.log(j, name);
-                                            flag = 0;
-                                        } else {
-                                            console.log(j, name);
-                                            flag = 1;
-                                            var names = i;
-                                            window.names = names;
-                                            break;
-                                        }
-                                        if (flag == 1) {
-                                            console.log(flag);
-                                            break;
-                                        }
-                                    }
-                                });
+                                console.log(i);
+                                if (i != name) {
+                                    console.log(i, name);
+                                    flag = 0;
+                                } else {
+                                    console.log(i, name);
+                                    flag = 1;
+                                    var names = i;
+                                    window.names = names;
+                                    break;
+                                }
                             }
                             var names = window.names;
                             console.log(names);
                             if (names) {
-                                db.ref('users/' + userID + '/Todo' + '/' + names + '/' + name).remove().then(function() {
-                                    window.location = "users.html";
+                                db.ref('users/' + userID + '/Todo' + '/' + names).remove().then(function() {
+                                    //window.location = "users.html";
                                     alert("Event deleted successfully");
                                 }).catch(function(error) {
                                     alert(error.message);
@@ -185,31 +161,21 @@
                             var data3 = snapshot.val();
                             console.log(data3);
                             for (i in data3) {
-                                db.ref('users/' + userID + '/Todo' + '/' + i).on("value", function(snapshot) {
-                                    var data4 = snapshot.val();
-                                    console.log(data4);
-                                    for (j in data4) {
-                                        if (j != name) {
-                                            console.log(j, name);
-                                            flag = 0;
-                                        } else {
-                                            console.log(j, name);
-                                            flag = 1;
-                                            var names = i;
-                                            window.names = names;
-                                            break;
-                                        }
-                                        if (flag == 1) {
-                                            console.log(flag);
-                                            break;
-                                        }
-                                    }
-                                });
+                                if (i != name) {
+                                    console.log(i, name);
+                                    flag = 0;
+                                } else {
+                                    console.log(i, name);
+                                    flag = 1;
+                                    var names = i;
+                                    window.names = names;
+                                    break;
+                                }
                             }
                             var names = window.names;
                             console.log(names);
                             if (names) {
-                                db.ref('users/' + userID + '/Todo' + '/' + names + '/' + name).remove().then(function() {
+                                db.ref('users/' + userID + '/Todo' + '/' + names).remove().then(function() {
                                     window.location = "users.html";
                                     alert("Event deleted successfully");
                                 }).catch(function(error) {

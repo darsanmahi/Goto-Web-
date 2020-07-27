@@ -27,7 +27,8 @@
                 if (eve1 == ' ' || evede1 == ' ' || evedate == '') {
                     alert("Invalid Input");
                 } else {
-                    db.ref('users/' + userID + '/Todo' + '/' + evedate + '/' + eve1).set({
+                    db.ref('users/' + userID + '/Todo' + '/' + eve1).set({
+                        Date: evedate,
                         Description: evede1,
                         Status: 'Pending'
                     }).then(alert("Event added succesfully")).catch(function(error) {
