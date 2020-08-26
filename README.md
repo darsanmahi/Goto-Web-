@@ -4,7 +4,7 @@ This is the repository of Web based application.
 
 ## Steps to proceed
 
-git clone https://github.com/darsanmahi/Goto-Web-.git
+git clone https://github.com/priyadarsanmahendiran/Goto-Web-.git
 
 `npm install`
 
